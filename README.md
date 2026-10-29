@@ -9,6 +9,7 @@ Company / Industry: Online Book Retail (practice dataset from books.toscrape.com
 Prepared for: Vephla University
 Prepared by: Oriomah Ogheneserome Gracious
 Date: October 2026
+
 Introduction
 This project collects, cleans and analyses catalogue data for 1,000 books from Books to Scrape 
 (books.toscrape.com), a sandbox website built for practicing web scraping, to show how pricing, ratings 
@@ -19,6 +20,7 @@ and do not represent real retail results.
 The goal of the analysis is to answer three questions: whether higher-priced books earn better ratings, 
 how price and rating differ across categories, and how the catalogue is spread across price bands and 
 stock levels. The findings are presented in a Power BI dashboard.
+
 Methodology
 The analysis followed a structured, step-by-step data analytics approach, from collecting the data with a 
 Python web scraper to reporting the findings in Power BI.
@@ -40,6 +42,7 @@ comparisons, rating and price-band distributions, and slicers for category and s
 with notes on the limits of the data.
 7. Tools Used: Python (requests, BeautifulSoup, pandas) in a Jupyter Notebook for scraping and 
 cleaning, and Microsoft Power BI Desktop for analysis and visualization.
+
 Story of Data
 The cleaned dataset holds one row for each of the 1,000 books listed on Books to Scrape, described by 
 eight fields. Some fields come from the listing pages and others from each book's own page.
@@ -56,11 +59,13 @@ description Publisher's product description Book page It's hard to imagine a
 world without...
 Title, category, upc, url and description are descriptive fields. Price, rating and stock are the measures 
 used in the analysis.
+
 Data Collection (Web Scraping with Python)
 A two-stage Python scraper collected all 1,000 books in one run: the first stage gathers the book list, and 
 the second opens every book's own page for the remaining details. Books to Scrape was chosen because 
 it is built for scraping practice, so there are no legal or blocking concerns, and the scraper still pauses 
 between requests and identifies itself.
+
 Step What the code does Why it matters
 1. Inspect the site Page structure was checked in the browser to 
 find the HTML tags holding each field.
@@ -130,6 +135,7 @@ server, and the safety
 copy means an 
 interruption does not 
 lose the first stage.
+
 Observations:
 1. Testing on a single page returned 20 books, and requesting page 999 correctly returned None.
 2. The full run collected 1,000 books across 50 pages, giving a raw table of 1,000 rows and 12 
@@ -189,6 +195,7 @@ rating of 2.92 out of 5.
 • Average Price - £35.07
 • Average Rating - 2.92
 • Categories - 50
+
 Books by Star Rating
 Observations:
 1. One-star is the largest group with 226 books (22.6%), followed by 3 stars (203), 2 stars and 5 
@@ -198,6 +205,7 @@ stars (196 each) and 4 stars (179), the smallest group.
 Pre-Insights:
 1. Ratings are spread almost evenly, with a slight lean towards low ratings.
 2. The share of low-rated books is worth reviewing for quality or description problems.
+   
 Average Price by Star Rating
 Observations:
 1. Average price is £34.56 for 1-star books, £34.81 for 2 stars, £34.69 for 3 stars, £36.09 for 4 stars 
@@ -208,6 +216,7 @@ in Python on the cleaned data).
 Pre-Insights:
 1. Price does not predict rating, so a higher price is not a sign of a better-rated book.
 2. Pricing decisions should not assume a link with customer ratings.
+   
 Books by Price Band
 Observations:
 1. £20-29 has the most books (206), followed by £40-49 (205), £50-60 (198), £10-19 (196) and £30-
@@ -217,6 +226,7 @@ Pre-Insights:
 1. Prices are spread almost evenly from £10.00 to £59.99, so no price range dominates the 
 catalogue.
 2. Adding sales data would show which price bands actually sell.
+   
 Average Price by Category
 Observations:
 1. Novels has the highest average price at £54.81, followed by Health (£51.45) and Art (£38.52).
@@ -227,6 +237,7 @@ Pre-Insights:
 1. The extremes in this chart reflect single listings, not category trends.
 2. Among categories with 10 or more books, Travel (£39.79) and Fantasy (£39.59) have the highest 
 average prices, while Food and Drink (£31.41) and Thriller (£31.43) have the lowest.
+
 Average Rating by Category
 Observations:
 1. Adult Fiction, Erotica and Novels each have a perfect 5.00 average, followed by Christian Fiction 
@@ -237,6 +248,7 @@ Pre-Insights:
 category.
 2. Among categories with 10 or more books, Poetry (3.53, 19 books) is the best rated and Science 
 Fiction (2.25, 16 books) the lowest.
+
 Post-Analysis Insights
 1. Price does not predict rating: average price stays between £34.56 and £36.09 at every star level, 
 with a correlation of 0.03.
@@ -250,6 +262,7 @@ Poetry is the best rated (3.53) and Science Fiction the lowest (2.25).
 6. Total Books: 1,000
 7. Average Price: £35.07
 8. Average Rating: 2.92
+   
 Recommendations
 1. Set prices independently of expected ratings, since the data shows no link between the two 
 (correlation 0.03).
